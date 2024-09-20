@@ -1,26 +1,27 @@
 <div class="calculator">
   <h2>Yield Net Return Simulator</h2>
 
-  <label>Purchase Price of Property (€):</label>
-  <input type="number" [(ngModel)]="purchasePrice" placeholder="Enter property price">
+  <div class="form-group">
+    <label>Purchase Price of Property (€):</label>
+    <input type="number" [(ngModel)]="purchasePrice" placeholder="Enter property price">
+  </div>
 
-  <label>Monthly Rent Amount (€):</label>
-  <input type="number" [(ngModel)]="monthlyRent" placeholder="Enter monthly rent">
+  <div class="form-group">
+    <label>Monthly Rent Amount (€):</label>
+    <input type="number" [(ngModel)]="monthlyRent" placeholder="Enter monthly rent">
+  </div>
 
-  <label>Annual Rental Fee (€):</label>
-  <input type="number" [(ngModel)]="annualRentalFee" placeholder="Enter annual rental fee">
+  <div class="form-group">
+    <label>Annual Rental Fee (€):</label>
+    <input type="number" [(ngModel)]="annualRentalFee" placeholder="Enter annual rental fee">
+  </div>
 
-  <button (click)="calculate()">Calculate</button>
+  <button class="calculate-btn" (click)="calculate()">Calculate</button>
 
-  <div *ngIf="results">
-    <h3>Results:</h3>
-    <p>Year 1 Net Income per Month: €{{ results.year1NetIncome | number: '1.2-2' }}</p>
-    <p>Year 1 Return: {{ results.year1Return | number: '1.2-2' }}%</p>
-
-    <p>Year 2 Net Income per Month: €{{ results.year2NetIncome | number: '1.2-2' }}</p>
-    <p>Year 2 Return: {{ results.year2Return | number: '1.2-2' }}%</p>
-
-    <p>Year 3 Net Income per Month: €{{ results.year3NetIncome | number: '1.2-2' }}</p>
-    <p>Year 3 Return: {{ results.year3Return | number: '1.2-2' }}%</p>
+  <div *ngIf="results" class="results">
+    <h3>Results</h3>
+    <p><strong>Year 1:</strong> Net Income per Month: €{{ results.year1NetIncome | number: '1.2-2' }} (Return: {{ results.year1Return | number: '1.2-2' }}%)</p>
+    <p><strong>Year 2:</strong> Net Income per Month: €{{ results.year2NetIncome | number: '1.2-2' }} (Return: {{ results.year2Return | number: '1.2-2' }}%)</p>
+    <p><strong>Year 3:</strong> Net Income per Month: €{{ results.year3NetIncome | number: '1.2-2' }} (Return: {{ results.year3Return | number: '1.2-2' }}%)</p>
   </div>
 </div>

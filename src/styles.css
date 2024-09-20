@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+  font-family: 'louize';
+  src: url('/font/louize-font.otf') format('opentype'); /* Use the direct path */
+}
+
+body {
+  font-family: 'louize', sans-serif;
+  margin: 0;
+}
