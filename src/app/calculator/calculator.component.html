@@ -1,27 +1,98 @@
 <div class="calculator">
-  <h2>Yield Net Return Simulator</h2>
+  <div class="calculator-left">
+    <h2>Yield Net Return Simulator</h2>
 
-  <div class="form-group">
-    <label>Purchase Price of Property (€):</label>
-    <input type="number" [(ngModel)]="purchasePrice" placeholder="Enter property price">
+    <div class="form-group">
+      <label>Purchase Price of Property (€):</label>
+      <input type="number" [(ngModel)]="purchasePrice" placeholder="Enter property price">
+    </div>
+
+    <div class="form-group">
+      <label>Monthly Rent Amount (€):</label>
+      <input type="number" [(ngModel)]="monthlyRent" placeholder="Enter monthly rent">
+    </div>
+
+    <div class="form-group">
+      <label>Annual Rental Fee (€):</label>
+      <input type="number" [(ngModel)]="annualRentalFee" placeholder="Enter annual rental fee">
+    </div>
+
+    <button class="calculate-btn" (click)="calculate()">Calculate</button>
   </div>
 
-  <div class="form-group">
-    <label>Monthly Rent Amount (€):</label>
-    <input type="number" [(ngModel)]="monthlyRent" placeholder="Enter monthly rent">
-  </div>
+  <div class="calculator-right">
+    <div *ngIf="!results" class="placeholder-image">
+      <img src="/img/houses.jpg" alt="Calculator Placeholder" />
+    </div>
 
-  <div class="form-group">
-    <label>Annual Rental Fee (€):</label>
-    <input type="number" [(ngModel)]="annualRentalFee" placeholder="Enter annual rental fee">
-  </div>
+    <div *ngIf="results" class="results">
+      <h3>Calculation Results</h3>
+    
+      <div class="result-card">
+        <h4>Year 1</h4>
+        <div class="result-details">
+          <div class="result-item">
+            <span class="result-label">Net Income per Month:</span>
+            <span class="result-value">€{{ results.year1NetIncome | number: '1.2-2' }}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Return on Investment:</span>
+            <span class="result-value">{{ results.year1Return | number: '1.2-2' }}%</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="result-card">
+        <h4>Year 2</h4>
+        <div class="result-details">
+          <div class="result-item">
+            <span class="result-label">Net Income per Month:</span>
+            <span class="result-value">€{{ results.year2NetIncome | number: '1.2-2' }}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Return on Investment:</span>
+            <span class="result-value">{{ results.year2Return | number: '1.2-2' }}%</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="result-card">
+        <h4>Year 3</h4>
+        <div class="result-details">
+          <div class="result-item">
+            <span class="result-label">Net Income per Month:</span>
+            <span class="result-value">€{{ results.year3NetIncome | number: '1.2-2' }}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Return on Investment:</span>
+            <span class="result-value">{{ results.year3Return | number: '1.2-2' }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <button class="calculate-btn" (click)="calculate()">Calculate</button>
-
-  <div *ngIf="results" class="results">
-    <h3>Results</h3>
-    <p><strong>Year 1:</strong> Net Income per Month: €{{ results.year1NetIncome | number: '1.2-2' }} (Return: {{ results.year1Return | number: '1.2-2' }}%)</p>
-    <p><strong>Year 2:</strong> Net Income per Month: €{{ results.year2NetIncome | number: '1.2-2' }} (Return: {{ results.year2Return | number: '1.2-2' }}%)</p>
-    <p><strong>Year 3:</strong> Net Income per Month: €{{ results.year3NetIncome | number: '1.2-2' }} (Return: {{ results.year3Return | number: '1.2-2' }}%)</p>
   </div>
 </div>
+
+<!-- For the input:
+
+Purchase Price: 500,000 EUR
+Monthly Rent: 2,000 EUR
+Annual Rental Fee: 1,200 EUR
+The expected output will be:
+
+Year 1:
+Agency Fee: 30% of 24,000 EUR = 7,200 EUR
+Net Income: 24,000 EUR - 7,200 EUR - 1,200 EUR = 15,600 EUR
+Monthly Net Income: 15,600 EUR / 12 = 1,300 EUR
+Return: (15,600 EUR / 500,000 EUR) * 100 = 3.12%
+Year 2:
+Agency Fee: 25% of 24,000 EUR = 6,000 EUR
+Net Income: 24,000 EUR - 6,000 EUR - 1,200 EUR = 16,800 EUR
+Monthly Net Income: 16,800 EUR / 12 = 1,400 EUR
+Return: (16,800 EUR / 500,000 EUR) * 100 = 3.36%
+Year 3:
+Agency Fee: 20% of 24,000 EUR = 4,800 EUR
+Net Income: 24,000 EUR - 4,800 EUR - 1,200 EUR = 18,000 EUR
+Monthly Net Income: 18,000 EUR / 12 = 1,500 EUR
+Return: (18,000 EUR / 500,000 EUR) * 100 = 3.60% -->
